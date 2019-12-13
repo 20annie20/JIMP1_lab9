@@ -7,28 +7,26 @@
  * Zwraca == NULL - podczas wczytywania wystapil blad
  */
 Matrix * readFromFile(char * fname) {
-				int r,c;
-				int ir, ic;
-				FILE * fin =  fopen(fname,"r");
-				Matrix * mat = NULL;
+	int r,c;
+	int ir, ic;
+	FILE * fin =  fopen(fname,"r");
+	Matrix * mat = NULL;
 
-				if (fin != NULL) {
-					fscanf(fin,"%d %d",&r,&c);
-					mat = createMatrix(r,c);
-					if (mat != NULL) {
-						for (ir = 0; ir < r; ir++) 
-							for (ic = 0; ic < c; ic++)
-								fscanf(fin, "%lf",&(mat->data[ir][ic]));
-					} else {
-								fprintf(stderr,"Wystąpił problem podczas tworzenia macierzy o rozmiarach %d x %d dla danych z pliku: %s\n", r, c, fname);
-					}
-
-					fclose(fin);
-				} else {
-								fprintf(stderr,"Nie mogę otworzyć pliku o nazwie: %s\n", fname);
-				}
-
-				return mat;
+	if (fin != NULL) {
+		fscanf(fin,"%d %d",&r,&c);
+		mat = createMatrix(r,c);
+		if (mat != NULL) {
+			for (ir = 0; ir < r; ir++) 
+				for (ic = 0; ic < c; ic++)
+					fscanf(fin, "%lf",&(mat->data[ir][ic]));
+		} else {
+			fprintf(stderr,"Wystąpił problem podczas tworzenia macierzy o rozmiarach %d x %d dla danych z pliku: %s\n", r, c, fname);
+		}
+		fclose(fin);
+	} else {
+		fprintf(stderr,"Nie mogę otworzyć pliku o nazwie: %s\n", fname);
+	}
+	return mat;
 }
 
 void printToScreen(Matrix *mat) {
@@ -68,7 +66,7 @@ void freeMatrix(Matrix * mat) {
 }
 
 Matrix * findElem(Matrix *mat, int r, int c){
-	int max = mat->data[0][0];
+	float max = mat->data[0][0];
 	for(int i = 0; i < r; i++){
 		if(mat->data[i][0] > max){
 			max = mat->data[i][0];
