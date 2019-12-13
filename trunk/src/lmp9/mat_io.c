@@ -67,3 +67,7 @@ void freeMatrix(Matrix * mat) {
 	free(mat);
 }
 
+Matrix * findElem(Matrix *mat, int r, int c){
+	return mat;
+}
+

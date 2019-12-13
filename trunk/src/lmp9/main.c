@@ -15,10 +15,14 @@ int main(int argc, char ** argv) {
 	if (b == NULL) return -2;
 	printToScreen(A);
 	printToScreen(b);
-
+	
+	A = finElem(A);
+	printToScreen(A);
 	res = eliminate(A,b);
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
+
+		
 		res = backsubst(x,A,b);
 
 		printToScreen(x);
