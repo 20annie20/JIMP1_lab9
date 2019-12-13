@@ -15,14 +15,18 @@ int main(int argc, char ** argv) {
 	if (b == NULL) return -2;
 	printToScreen(A);
 	printToScreen(b);
-
+	
+	A = findElem(A, A->r, A->c, 0);
+	printToScreen(A);
 	res = eliminate(A,b);
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
+
+		
 		res = backsubst(x,A,b);
 
 		printToScreen(x);
-	  freeMatrix(x);
+	  	freeMatrix(x);
 	} else {
 					fprintf(stderr,"Błąd! Nie mogłem utworzyć wektora wynikowego x.\n");
 	}

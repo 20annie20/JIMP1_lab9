@@ -2,8 +2,8 @@
 #define _MAT_IO_H
 
 typedef struct _Matrix {
-				int r,c;
-				double **data;
+	int r,c;
+	double **data;
 } Matrix;
 
 /**
@@ -16,4 +16,5 @@ void printToScreen(Matrix *mat);
 Matrix * createMatrix(int r, int c);
 void freeMatrix(Matrix *mat);
 
+Matrix * findElem(Matrix *mat, int r, int c, int ktory_rzad);
 #endif
