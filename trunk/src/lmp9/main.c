@@ -16,7 +16,7 @@ int main(int argc, char ** argv) {
 	printToScreen(A);
 	printToScreen(b);
 	
-	A = finElem(A);
+	A = findElem(A, A->r, A->c);
 	printToScreen(A);
 	res = eliminate(A,b);
 	x = createMatrix(b->r, 1);

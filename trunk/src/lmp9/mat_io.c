@@ -68,6 +68,14 @@ void freeMatrix(Matrix * mat) {
 }
 
 Matrix * findElem(Matrix *mat, int r, int c){
+	int max = mat->data[0][0];
+	for(int i = 0; i < r; i++){
+		if(mat->data[i][0] > max){
+			max = mat->data[i][0];
+		}
+		//po znalezieniu najwiekszego, zamien z pierwszym wierszem
+	}
+	printf("najwieksza wartosc w kolumnie to: %lf\n", max);
 	return mat;
 }
 
