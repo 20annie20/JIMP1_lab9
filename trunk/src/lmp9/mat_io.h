@@ -16,5 +16,5 @@ void printToScreen(Matrix *mat);
 Matrix * createMatrix(int r, int c);
 void freeMatrix(Matrix *mat);
 
-Matrix * findElem(Matrix *mat, int r, int c);
+Matrix * findElem(Matrix *mat, int r, int c, int ktory_rzad);
 #endif

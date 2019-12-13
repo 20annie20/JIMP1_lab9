@@ -16,7 +16,7 @@ int main(int argc, char ** argv) {
 	printToScreen(A);
 	printToScreen(b);
 	
-	A = findElem(A, A->r, A->c);
+	A = findElem(A, A->r, A->c, 0);
 	printToScreen(A);
 	res = eliminate(A,b);
 	x = createMatrix(b->r, 1);
@@ -26,7 +26,7 @@ int main(int argc, char ** argv) {
 		res = backsubst(x,A,b);
 
 		printToScreen(x);
-	  freeMatrix(x);
+	  	freeMatrix(x);
 	} else {
 					fprintf(stderr,"Błąd! Nie mogłem utworzyć wektora wynikowego x.\n");
 	}

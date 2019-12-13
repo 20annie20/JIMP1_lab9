@@ -65,22 +65,22 @@ void freeMatrix(Matrix * mat) {
 	free(mat);
 }
 
-Matrix * findElem(Matrix *mat, int r, int c){
-	float max = mat->data[0][0];
+Matrix * findElem(Matrix *mat, int r, int c, int ktory_rzad){//ktory rzad z diagonali 
+	float max = mat->data[0][ktory_rzad]; //jak i-ty wiersz jest istotny, to patrzymy tez na i-ta kolumne
 	int row;
 	for(int i = 0; i < r; i++){
-		if(mat->data[i][0] > max){
-			max = mat->data[i][0];
+		if(mat->data[i][ktory_rzad] > max){
+			max = mat->data[i][ktory_rzad];
 			row = i;
 		}
 	}
 	//zamiana wierszy 
 	float temp[c];
 	for(int i = 0; i < c; i++){
-		temp[i] = mat->data[0][i];//spisanie danych do tempa
+		temp[i] = mat->data[ktory_rzad][i];
 	}
 	for(int i = 0; i < c; i++){
-		mat->data[0][i] = mat->data[row][i];
+		mat->data[ktory_rzad][i] = mat->data[row][i];
 	}
 	
 	for(int i = 0; i < c; i++){
