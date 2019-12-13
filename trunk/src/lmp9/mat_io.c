@@ -71,7 +71,7 @@ Matrix * findElem(Matrix *mat, int r, int c){
 	for(int i = 0; i < r; i++){
 		if(mat->data[i][0] > max){
 			max = mat->data[i][0];
-			row = i+1;
+			row = i;
 		}
 	}
 	//zamiana wierszy 
@@ -79,13 +79,13 @@ Matrix * findElem(Matrix *mat, int r, int c){
 	for(int i = 0; i < c; i++){
 		temp[i] = mat->data[0][i];//spisanie danych do tempa
 	}
-	mat->data[0] = mat->data[row];
+	for(int i = 0; i < c; i++){
+		mat->data[0][i] = mat->data[row][i];
+	}
+	
 	for(int i = 0; i < c; i++){
 		mat->data[row][i] = temp[i];
 	}
-	
-	printf("najwieksza wartosc w kolumnie to: %lf\n", max);
-	printf("jest to w wierszu %d\n", row);
 	return mat;
 }
 
