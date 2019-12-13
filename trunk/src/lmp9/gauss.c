@@ -18,7 +18,7 @@ int eliminate(Matrix *mat, Matrix *b){
 					return 1;
 					if (mat->data[i][j] == 0)
 					break;
-				int m = mat->data [i+1][j]/mat->data[i][j];
+				double m = mat->data [i+1][j]/mat->data[i][j];
 					for (int k=j; k < mat->c; k++)
 					{
 						b->data[k][0] -= m*b->data[k][0];
