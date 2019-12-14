@@ -24,7 +24,7 @@ int  backsubst(Matrix *x, Matrix *mat, Matrix *b) {
 		if(mat->data[i][i] != 0){ //zrobilismy przestawianie, czyli macierz musi byc nieosobliwa
 								  //no i jestesmy na 'stopniu' macierzy schodkowej
 			x->data[i][0] = (b->data[i][0] + suma) / mat->data[i][i];//x dla danego wiersza staje sie suma 
-			printf("jestem w obliczance\n");                        //wyrazu wolnego i suma dotychcz. podzielona
+			              	       		  							 //wyrazu wolnego i suma dotychcz. podzielona
 																	// przez wspolczynnik przy x
 		}else{
 			fprintf(stderr, "macierz jest osobliwa, dzielenie przez zero!!!\n");
