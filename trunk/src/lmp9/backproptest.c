@@ -23,7 +23,7 @@ int main(int argc, char ** argv) {
 		printToScreen(x);
 	  	freeMatrix(x);
 	} else {
-		printf(stderr,"Błąd! Nie mogłem utworzyć wektora wynikowego x.\n");
+		fprintf(stderr,"Bląd! Nie moglem utworzyc wektora wynikowego x.\n");
 	}
 
 	freeMatrix(A);
