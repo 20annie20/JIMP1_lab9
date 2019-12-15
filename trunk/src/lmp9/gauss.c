@@ -22,7 +22,7 @@ for (int i=1; i < mat->r; i++)
 					if (mat->data[i-1][i-1] == 0)
 					return 1;
 					
-					findElem (mat, mat->c, mat->r, i);
+					findElem (mat, mat->c, mat->r, i-1);
 					
 					m = mat->data[j+1][i-1]/mat->data[i-1][i-1];
 					b->data[j+1][0] -= m*(b->data[i-1][0]);
