@@ -15,10 +15,7 @@ for (int i=1; i < mat->r; i++)
 			double m;
 			
 			for (int j=0; j< mat->r -1; j++) 
-				{
-					if (mat->data[0][0] == 0)
-					return 1;
-					
+				{					
 					if (mat->data[i][j] == 0)
 					continue;
 					
@@ -35,7 +32,7 @@ for (int i=1; i < mat->r; i++)
 				}
 				
 		}
-		
+
 		return 0;
 }
 
