@@ -67,3 +67,30 @@ void freeMatrix(Matrix * mat) {
 	free(mat);
 }
 
+Matrix *findElem (Matrix *mat, int r, int c, int rnum)
+{
+	double t = mat->data[0][rnum];
+	int k = -1;
+	for (int i = 0; i < r; i++)
+		{
+			for (int j=0; j < c; j++)
+			{
+				if (mat->data[i][j] > t)
+					k = i;
+			} 
+		}
+		if (k > -1)
+		{
+			double *tmp = malloc (sizeof (double)*c);
+			for (int i = 0; i < r; i++)
+			{
+				for (int j = 0; j < c; j++)
+				{
+					tmp[j] = mat->data[k][j];
+					mat->data[k][j] = mat->data [rnum][j];
+					mat->data[rnum][j] = tmp[j];
+				}
+			}
+		}
+		return mat;
+}
