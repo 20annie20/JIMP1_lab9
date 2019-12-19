@@ -17,4 +17,7 @@ int main(int argc, char **argv)
 
     printf ("%d\n", res);
 
+	printToScreen(A);
+	printToScreen(b);
+
 }
