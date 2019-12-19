@@ -11,25 +11,23 @@ int eliminate(Matrix *mat, Matrix *b){
     /**
   	 * Tutaj należy umieścić właściwą implemntację.
 		 */
-for (int i=1; i < mat->r; i++)
+for (int i=0; i < mat->r -1; i++)
 		{
 			double m;
 			
-			for (int j=0; j< mat->r -1; j++) 
+			for (int j=i+1; j< mat->r; j++) 
 				{					
-					if (mat->data[i][j] == 0)
-					continue;
-					
-					if (mat->data[i-1][i-1] == 0)
+								
+					if (mat->data[i][i] == 0)
 					return 1;
 					
-					findElem (mat, mat->c, mat->r, i-1);
+					findElem (mat, mat->c, mat->r, i);
 					
-					m = mat->data[j+1][i-1]/mat->data[i-1][i-1];
-					b->data[j+1][0] -= m*(b->data[i-1][0]);
+					m = mat->data[j][i]/mat->data[i][i];
+					b->data[j][0] -= m*(b->data[i][0]);
 					
 					for (int k=0; k < mat->c; k++)
-						mat->data[j+1][k] -= m*(mat->data[i-1][k]);
+						mat->data[j][k] -= m*(mat->data[i][k]);
 				}
 		}
 

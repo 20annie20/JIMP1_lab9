@@ -1,5 +1,5 @@
 all:
-	gcc -Wall --pedantic src/*.c -o bin/gauss
+	gcc -Wall --pedantic *.c -o bin/b.exe
 
 test: all
-	bin/gauss dane/A dane/b
+	bin/b.exe dane/A dane/b

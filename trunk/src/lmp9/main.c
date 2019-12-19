@@ -13,6 +13,7 @@ int main(int argc, char ** argv) {
 	Matrix * x;
 
 	if (A == NULL) return -1;
+	//implementowanie testowe
 	if (b == NULL) return -2;
 	printToScreen(A);
 	printToScreen(b);

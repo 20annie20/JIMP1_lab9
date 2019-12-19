@@ -50,7 +50,7 @@ Matrix * createMatrix(int r, int c) {
 			mat->c = c;
 			mat->data = (double**) malloc(sizeof(double*) * r);
 			for (i=0; i < r; i++) {
-					mat->data[i] = (double*) malloc(sizeof(double) * c);
+				mat->data[i] = (double*) malloc(sizeof(double) * c);
 			}
 		}
 
