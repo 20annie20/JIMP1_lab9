@@ -11,10 +11,11 @@ int main(int argc, char ** argv) {
 	Matrix * A = readFromFile(argv[1]);
 	Matrix * b = readFromFile(argv[2]);
 	Matrix * x;
+	Matrix * compare;
 
 	//uzywane do testu
 	if(argc == 4){
-		Matrix *compare = readFromFile(argv[3]);
+		compare = readFromFile(argv[3]);
 		if(compare == NULL) 
 			fprintf(stderr, "nie moge wczytac danych do porownania wynikow!\n");
 	}
@@ -52,18 +53,26 @@ int main(int argc, char ** argv) {
 		res = backsubst(x,A,b);
 
 		printToScreen(x);
-	  	freeMatrix(x);
 	} else {
 		fprintf(stderr,"Błąd! Nie mogłem utworzyć wektora wynikowego x.\n");
 		return -5;
 	}
-
-	for(int i = 0; i < x->r; i++){
-		;//sprawdzenie czy dane otrzymane zgadzaja sie w jakims przyblizeniu z oczekiwanymi
+//oszacowanie poprawnosci wyniku
+	if(argc == 4){
+		#include <math.h>
+		for(int i = 0; i < x->r; i++){
+			if(ceil(x->data[i][0]) < compare->data[i][0] || floor(x->data[i][0]) > compare->data[i][0]){
+				printf("obliczanie raczej nieudane, spodziewane wyniki:\n");
+				printToScreen(compare);
+			}
+		}
 	}
+
 
 	freeMatrix(A);
 	freeMatrix(b);
+	freeMatrix(x);
+	freeMatrix(compare);
 
 	return 0;
 }
