@@ -4,19 +4,27 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+void errorHandle(int *p){
+	if(p == NULL)
+		printf("Test - nie odczytano danych\n");
+}
 
 int main(int argc, char ** argv) {
 	int res;
 	Matrix * A = readFromFile(argv[1]);
-	//zupelnie inny komentarz o testach
 	Matrix * b = readFromFile(argv[2]);
 	Matrix * x;
 
-	if (A == NULL) return -1;
-	//implementowanie testowe
-	if (b == NULL) return -2;
+	if (A == NULL) 
+		return -1;
+	if (b == NULL) 
+		return -2;
 	printToScreen(A);
 	printToScreen(b);
+
+	if(A->c != b->c){
+		errorHandle(NULL);
+	}
 	
 	A = findElem(A, A->r, A->c, 0);
 	printToScreen(A);
