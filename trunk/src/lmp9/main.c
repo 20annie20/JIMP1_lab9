@@ -10,6 +10,18 @@ int main(int argc, char ** argv) {
 	Matrix * A = readFromFile(argv[1]);
 	Matrix * b = readFromFile(argv[2]);
 	Matrix * x;
+<<<<<<< HEAD
+=======
+	Matrix * compare;
+
+	//uzywane do testu
+	if(argc == 4){
+		compare = readFromFile(argv[3]);
+		if(compare == NULL) 
+			fprintf(stderr, "nie moge wczytac danych do porownania wynikow!\n");
+	}
+
+>>>>>>> testy
 
 	if (A == NULL){
 		fprintf(stderr, "nie moge wczytac danych poprawnie\n");
@@ -28,9 +40,6 @@ int main(int argc, char ** argv) {
 		return -3;
 	}
 	
-	//reorganizacja macierzy
-	A = findElem(A, A->r, A->c, 0);
-	printToScreen(A);
 	res = eliminate(A,b);
 	if(res != 0 ){
 		fprintf(stderr,"brak elementu niezerowego do umieszczenia na diagonali. nie mozemy dzielic przez 0!\n");
@@ -42,14 +51,33 @@ int main(int argc, char ** argv) {
 		res = backsubst(x,A,b);
 
 		printToScreen(x);
-	  	freeMatrix(x);
 	} else {
 		fprintf(stderr,"Błąd! Nie mogłem utworzyć wektora wynikowego x.\n");
 		return -5;
+<<<<<<< HEAD
+=======
 	}
+//oszacowanie poprawnosci wyniku
+	if(argc == 4){
+		#include <math.h>
+		int bool = 0;
+		for(int i = 0; i < x->r; i++){
+			if(ceil(x->data[i][0]) < compare->data[i][0] || floor(x->data[i][0]) > compare->data[i][0]){
+				printf("obliczanie raczej nieudane, spodziewane wyniki:\n");
+				printToScreen(compare);
+			}
+			else bool = 1;
+		}
+		if(bool)
+			printf("obliczanie udane!\n");
+>>>>>>> testy
+	}
+
 
 	freeMatrix(A);
 	freeMatrix(b);
+	freeMatrix(x);
+	freeMatrix(compare);
 
 	return 0;
 }
