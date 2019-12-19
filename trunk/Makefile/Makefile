@@ -1,5 +1,9 @@
+DIR = D:/JIMP/JIMP1_lab9/trunk/
+
 all:
-	gcc -Wall --pedantic src/*.c -o bin/gauss
+	gcc -Wall --pedantic $(DIR)src/lmp9/*.c   -o $(DIR)gauss
+
+
 
 test: all
-	bin/gauss dane/A dane/b
+	$(DIR)bin/gauss $(DIR)dane/A $(DIR)dane/b
