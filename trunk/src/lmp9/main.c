@@ -5,19 +5,33 @@
 #include <stdio.h>
 
 
+void errorHandle(int *p){
+	if(p == NULL)
+		fprintf(stderr, "Test - nie odczytano danych\n");
+}
+
 int main(int argc, char ** argv) {
 	int res;
 	Matrix * A = readFromFile(argv[1]);
-	//zupelnie inny komentarz o testach
 	Matrix * b = readFromFile(argv[2]);
 	Matrix * x;
 
-	if (A == NULL) return -1;
-	//implementowanie testowe
-	if (b == NULL) return -2;
+	if (A == NULL){
+		errorHandle(NULL);
+		return -1;
+	}
+	if (b == NULL){
+		errorHandle(NULL);
+		return -2;
+	}
 	printToScreen(A);
 	printToScreen(b);
+
+	if(A->r != b->r){
+		errorHandle(NULL);
+	}
 	
+	//reorganizacja macierzy
 	A = findElem(A, A->r, A->c, 0);
 	printToScreen(A);
 	res = eliminate(A,b);
@@ -30,7 +44,7 @@ int main(int argc, char ** argv) {
 		printToScreen(x);
 	  	freeMatrix(x);
 	} else {
-					fprintf(stderr,"Błąd! Nie mogłem utworzyć wektora wynikowego x.\n");
+		fprintf(stderr,"Błąd! Nie mogłem utworzyć wektora wynikowego x.\n");
 	}
 
 	freeMatrix(A);
