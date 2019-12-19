@@ -38,9 +38,6 @@ int main(int argc, char ** argv) {
 		return -3;
 	}
 	
-	//reorganizacja macierzy
-	A = findElem(A, A->r, A->c, 0);
-	printToScreen(A);
 	res = eliminate(A,b);
 	if(res != 0 ){
 		fprintf(stderr,"brak elementu niezerowego do umieszczenia na diagonali. nie mozemy dzielic przez 0!\n");
@@ -60,12 +57,16 @@ int main(int argc, char ** argv) {
 //oszacowanie poprawnosci wyniku
 	if(argc == 4){
 		#include <math.h>
+		int bool = 0;
 		for(int i = 0; i < x->r; i++){
 			if(ceil(x->data[i][0]) < compare->data[i][0] || floor(x->data[i][0]) > compare->data[i][0]){
 				printf("obliczanie raczej nieudane, spodziewane wyniki:\n");
 				printToScreen(compare);
 			}
+			else bool = 1;
 		}
+		if(bool)
+			printf("obliczanie udane!\n");
 	}
 
 
