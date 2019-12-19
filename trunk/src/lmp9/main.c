@@ -6,12 +6,14 @@
 
 
 int main(int argc, char ** argv) {
+	if(argc<3) fprintf(stderr, "nie podano dostatecznej liczby argumentow\n");
 	int res;
 	Matrix * A = readFromFile(argv[1]);
 	Matrix * b = readFromFile(argv[2]);
 	Matrix * x;
+
 	//uzywane do testu
-	if(argc > 2){
+	if(argc == 4){
 		Matrix *compare = readFromFile(argv[3]);
 		if(compare == NULL) 
 			fprintf(stderr, "nie moge wczytac danych do porownania wynikow!\n");
@@ -27,11 +29,10 @@ int main(int argc, char ** argv) {
 		return -2;
 	}
 
-
 	printToScreen(A);
 	printToScreen(b);
 
-	if(A->r != b->r){
+	if(A->c != b->r){
 		fprintf(stderr, "nieprawidlowe rozmiary macierzy!\n");
 		return -3;
 	}
@@ -42,6 +43,7 @@ int main(int argc, char ** argv) {
 	res = eliminate(A,b);
 	if(res != 0 ){
 		fprintf(stderr,"brak elementu niezerowego do umieszczenia na diagonali. nie mozemy dzielic przez 0!\n");
+		return -4;
 	}
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
@@ -53,6 +55,7 @@ int main(int argc, char ** argv) {
 	  	freeMatrix(x);
 	} else {
 		fprintf(stderr,"Błąd! Nie mogłem utworzyć wektora wynikowego x.\n");
+		return -5;
 	}
 
 	for(int i = 0; i < x->r; i++){
