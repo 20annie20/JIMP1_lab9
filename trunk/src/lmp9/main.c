@@ -8,6 +8,7 @@
 int main(int argc, char ** argv) {
 	int res;
 	Matrix * A = readFromFile(argv[1]);
+	//zupelnie inny komentarz o testach
 	Matrix * b = readFromFile(argv[2]);
 	Matrix * x;
 
